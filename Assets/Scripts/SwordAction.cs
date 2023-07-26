@@ -125,7 +125,7 @@ public class SwordAction : BaseAction
         };
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override bool TryTakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
@@ -135,6 +135,8 @@ public class SwordAction : BaseAction
 
         ActionStart(onActionComplete);
         OnSwordActionStarted?.Invoke(this, EventArgs.Empty);
+
+        return true;
     }
 
     public int GetMaxSwordDistance()

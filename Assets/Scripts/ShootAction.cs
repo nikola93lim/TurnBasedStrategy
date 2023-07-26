@@ -172,7 +172,7 @@ public class ShootAction : BaseAction
         return validGridPositionList;
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override bool TryTakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
@@ -183,6 +183,8 @@ public class ShootAction : BaseAction
         canShoot = true;
 
         ActionStart(onActionComplete);
+
+        return true;
     }
 
     public Unit GetTargetUnit()

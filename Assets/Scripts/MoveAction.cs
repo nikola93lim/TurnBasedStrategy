@@ -42,7 +42,7 @@ public class MoveAction : BaseAction
         }
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override bool TryTakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         positionList = new List<Vector3>();
         currentPositionIndex = 0;
@@ -57,6 +57,8 @@ public class MoveAction : BaseAction
         OnStartMoving?.Invoke(this, EventArgs.Empty);
 
         ActionStart(onActionComplete);
+
+        return true;
     }
 
     public override List<GridPosition> GetAllValidGridPositionsListForThisAction()

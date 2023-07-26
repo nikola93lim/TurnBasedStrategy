@@ -386,6 +386,8 @@ MonoBehaviour:
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  popupText: {fileID: 6541380501443786652, guid: 08613df748ea54fc0aed620ce170aae6,
+    type: 3}
 --- !u!114 &2710589084633697587
 MonoBehaviour:
   m_ObjectHideFlags: 0

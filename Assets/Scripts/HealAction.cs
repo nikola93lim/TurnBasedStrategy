@@ -122,7 +122,7 @@ public class HealAction : BaseAction
         };
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override bool TryTakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
@@ -132,5 +132,7 @@ public class HealAction : BaseAction
 
         OnHealActionStarted?.Invoke(this, EventArgs.Empty);
         ActionStart(onActionComplete);
+
+        return true;
     }
 }

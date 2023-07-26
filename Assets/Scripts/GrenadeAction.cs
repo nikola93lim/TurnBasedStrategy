@@ -7,13 +7,10 @@ public class GrenadeAction : BaseAction
 {
     [SerializeField] private Grenade grenadePrefab;
     [SerializeField] private LayerMask obstaclesLayerMask;
+    [SerializeField] private GameObject popupText;
 
     private int maxThrowDistance = 7;
-
-    private void Update()
-    {
-        if (!isActive) return;
-    }
+    private int grenadeCount = 2;
 
     public override string GetActionName()
     {
@@ -78,12 +75,20 @@ public class GrenadeAction : BaseAction
         };
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override bool TryTakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        Grenade grenade = Instantiate(grenadePrefab, unit.GetWorldPosition(), Quaternion.identity);
-        grenade.Setup(gridPosition, OnGrenadeFinished);
+        if (grenadeCount > 0)
+        {
+            grenadeCount--;
+            Grenade grenade = Instantiate(grenadePrefab, unit.GetWorldPosition(), Quaternion.identity);
+            grenade.Setup(gridPosition, OnGrenadeFinished);
 
-        ActionStart(onActionComplete);
+            ActionStart(onActionComplete);
+            return true;
+        }
+
+        Instantiate(popupText, transform.position, Quaternion.identity, transform);
+        return false;
     }
 
     private void OnGrenadeFinished()

@@ -55,11 +55,13 @@ public class InteractAction : BaseAction
         };
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override bool TryTakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         IInteractable interactable = LevelGrid.Instance.GetInteractableAtGridPosition(gridPosition);
         interactable.Interact(OnInteractionComplete, unit);
         ActionStart(onActionComplete);
+
+        return true;
     }
 
     private void OnInteractionComplete()

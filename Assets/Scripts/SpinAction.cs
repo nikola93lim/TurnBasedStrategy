@@ -22,11 +22,13 @@ public class SpinAction : BaseAction
         }
     }
 
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override bool TryTakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         totalSpinAmount = 0f;
 
         ActionStart(onActionComplete);
+
+        return true;
     }
 
     public override string GetActionName()

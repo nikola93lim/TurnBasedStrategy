@@ -77,10 +77,12 @@ public class UnitActionSystem : MonoBehaviour
 
             if (!selectedAction.IsValidGridPosition(gridPosition)) return;
 
+            if (!selectedAction.TryTakeAction(gridPosition, ClearBusy)) return;
+
             if (!selectedUnit.TrySpendActionPointsToTakeAction(selectedAction)) return;
 
             SetBusy();
-            selectedAction.TakeAction(gridPosition, ClearBusy);
+            //selectedAction.TryTakeAction(gridPosition, ClearBusy);
 
             OnActionStarted?.Invoke(this, EventArgs.Empty);
         }
