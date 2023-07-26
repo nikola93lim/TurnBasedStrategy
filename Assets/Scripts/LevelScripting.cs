@@ -5,17 +5,35 @@ using UnityEngine;
 public class LevelScripting : MonoBehaviour
 {
     [SerializeField] private Ramp firstRamp;
-    [SerializeField] private List<GameObject> firstRampHidersList;
+    [SerializeField] private Door secondDoor;
+
+    [SerializeField] private List<GameObject> firstSectionHidersList;
+    [SerializeField] private List<GameObject> secondSectionHidersList;
+    [SerializeField] private List<GameObject> thirdSectionHidersList;
+    [SerializeField] private List<GameObject> fourthSectionHidersList;
+    [SerializeField] private List<GameObject> fifthSectionHidersList;
+
     [SerializeField] private List<GameObject> firstSectionEnemyList;
+    [SerializeField] private List<GameObject> secondSectionEnemyList;
+    [SerializeField] private List<GameObject> thirdSectionEnemyList;
+    [SerializeField] private List<GameObject> fourthSectionEnemyList;
+    [SerializeField] private List<GameObject> fifthSectionEnemyList;
 
     private void Start()
     {
         firstRamp.OnRampOpened += FirstRamp_OnRampOpened;
+        secondDoor.OnDoorOpened += SecondDoor_OnDoorOpened;
+    }
+
+    private void SecondDoor_OnDoorOpened(object sender, System.EventArgs e)
+    {
+        SetActiveGameObjectList(secondSectionHidersList, false);
+        SetActiveGameObjectList(secondSectionEnemyList, true);
     }
 
     private void FirstRamp_OnRampOpened(object sender, System.EventArgs e)
     {
-        SetActiveGameObjectList(firstRampHidersList, false);
+        SetActiveGameObjectList(firstSectionHidersList, false);
         SetActiveGameObjectList(firstSectionEnemyList, true);
     }
 
