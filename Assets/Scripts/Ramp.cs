@@ -5,6 +5,8 @@ using System;
 
 public class Ramp : MonoBehaviour, IInteractable
 {
+    public event EventHandler OnRampOpened;
+
     private Animator animator;
     private GridPosition[] gridPositionArray;
     private bool isOpen;
@@ -22,7 +24,7 @@ public class Ramp : MonoBehaviour, IInteractable
         gridPositionArray = new GridPosition[] {
             LevelGrid.Instance.GetGridPosition(transform.position),
             LevelGrid.Instance.GetGridPosition(transform.position + transform.right * 2),
-            LevelGrid.Instance.GetGridPosition(transform.position + transform.right * -2)
+            //LevelGrid.Instance.GetGridPosition(transform.position + transform.right * -2)
         };
 
         foreach (GridPosition gridPosition in gridPositionArray)
@@ -78,6 +80,8 @@ public class Ramp : MonoBehaviour, IInteractable
         {
             Pathfinding.Instance.SetGridPositionWalkable(gridPosition, true);
         }
+
+        OnRampOpened?.Invoke(this, EventArgs.Empty);
     }
 
     private void CloseRamp()
