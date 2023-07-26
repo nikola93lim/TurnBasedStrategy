@@ -71,4 +71,9 @@ public class InteractSphere : MonoBehaviour, IInteractable
         isGreen = false;
         meshRenderer.material = redMaterial;
     }
+
+    public void Interact(Action onInteractionComplete, Unit unit)
+    {
+        Interact(onInteractionComplete);
+    }
 }

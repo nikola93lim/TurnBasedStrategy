@@ -58,7 +58,7 @@ public class InteractAction : BaseAction
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         IInteractable interactable = LevelGrid.Instance.GetInteractableAtGridPosition(gridPosition);
-        interactable.Interact(OnInteractionComplete);
+        interactable.Interact(OnInteractionComplete, unit);
         ActionStart(onActionComplete);
     }
 

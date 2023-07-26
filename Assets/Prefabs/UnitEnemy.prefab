@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5932327834453353198, guid: ebfcbbc5a2c2b4b2cb0ae16c0112b915,
+        type: 3}
+      propertyPath: actionPointsMax
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7176247134230328352, guid: ebfcbbc5a2c2b4b2cb0ae16c0112b915,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

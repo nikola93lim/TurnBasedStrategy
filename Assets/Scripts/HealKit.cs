@@ -55,4 +55,10 @@ public class HealKit : MonoBehaviour, IInteractable
         timer = 1f;
         isActive = true;
     }
+
+    public void Interact(Action onInteractionComplete, Unit unit)
+    {
+        Interact(onInteractionComplete);
+        unit.Heal(100);
+    }
 }

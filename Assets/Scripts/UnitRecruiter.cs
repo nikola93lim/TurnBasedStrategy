@@ -49,4 +49,9 @@ public class UnitRecruiter : MonoBehaviour, IInteractable
         Instantiate(unitPrefab, transform.position, Quaternion.identity);
         Pathfinding.Instance.SetGridPositionWalkable(gridPosition, true);
     }
+
+    public void Interact(Action onInteractionComplete, Unit unit)
+    {
+        Interact(onInteractionComplete);
+    }
 }

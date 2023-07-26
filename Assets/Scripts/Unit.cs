@@ -9,7 +9,7 @@ public class Unit : MonoBehaviour
     public static event EventHandler OnAnyUnitSpawned;
     public static event EventHandler OnAnyUnitDied;
 
-    private const int ACTION_POINTS_MAX = 9;
+    [SerializeField] private int actionPointsMax = 9;
 
     [SerializeField] private bool isEnemy;
 
@@ -18,10 +18,12 @@ public class Unit : MonoBehaviour
 
     private BaseAction[] baseActionArray;
 
-    private int actionPoints = ACTION_POINTS_MAX;
+    private int actionPoints;
 
     private void Awake()
     {
+        actionPoints = actionPointsMax;
+
         healthSystem = GetComponent<HealthSystem>();
 
         baseActionArray = GetComponents<BaseAction>();
@@ -63,7 +65,7 @@ public class Unit : MonoBehaviour
     {
         if (IsEnemy() && !TurnSystem.Instance.IsPlayerTurn() || !IsEnemy() && TurnSystem.Instance.IsPlayerTurn())
         {
-            actionPoints = ACTION_POINTS_MAX;
+            actionPoints = actionPointsMax;
 
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
         }

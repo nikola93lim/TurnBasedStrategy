@@ -94,4 +94,9 @@ public class Ramp : MonoBehaviour, IInteractable
             Pathfinding.Instance.SetGridPositionWalkable(gridPosition, false);
         }
     }
+
+    public void Interact(Action onInteractionComplete, Unit unit)
+    {
+        Interact(onInteractionComplete);
+    }
 }
