@@ -10,7 +10,13 @@ public class GrenadeAction : BaseAction
     [SerializeField] private GameObject popupText;
 
     private int maxThrowDistance = 7;
-    private int grenadeCount = 2;
+    private int grenadeCountMax = 2;
+    private int grenadeCount;
+
+    private void Start()
+    {
+        grenadeCount = grenadeCountMax;
+    }
 
     public override string GetActionName()
     {
@@ -94,5 +100,10 @@ public class GrenadeAction : BaseAction
     private void OnGrenadeFinished()
     {
         ActionComplete();
+    }
+
+    public void RefillGrenades()
+    {
+        grenadeCount = grenadeCountMax;
     }
 }
